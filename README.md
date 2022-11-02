@@ -2,7 +2,8 @@
 Objectives
 - Creating a library which allows the user to configure an object in a seamless way
 - Isolate the specific implementation of the library so then the user can't access it directly
-To demonstrate it, we'll create an SQL DB connection class, which has the ability to configure and return the SQL connection instance.
+
+To demonstrate this, we'll create an SQL DB connection class, which provides the ability to configure and return an SQL connection instance.
 
 Why do we need it ?
 - It's used in almost all libraries to guide the users to setup and configure objects in a seamless way.
@@ -17,12 +18,12 @@ var connection = new SimpleFluentSqlConnection()
 .AndPassword("Password")
 .Connect();
 
-Drawbacks
+Drawbacks of wrong implementations
 - It allows the user to call the functions randomly and regardless of the order of execution (it doesn't guide the user)
 - The user can skip calling required functions
 - The user has access to internal parameters and can instantiate them by creating a new object
 
-Solution
+Best practice
 - Create interfaces and so we achieve isolation
 - Each interface define a function which depends on the next interface return type, example below:
 
